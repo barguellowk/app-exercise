@@ -1,0 +1,48 @@
+
+<div style="display: -webkit-inline-box;">
+    <div style="width: 50%;">
+        <p>Create App</p>
+        <form [formGroup]="createAppForm" (ngSubmit)="createApp(createAppForm)">
+            <div>
+                <mat-form-field appearance="fill">
+                    <mat-label>Name App</mat-label>
+                    <input matInput formControlName="name" placeholder="Name application">
+                </mat-form-field>
+            </div>
+            <div>
+                <mat-form-field appearance="fill">
+                    <mat-label>Url App</mat-label>
+                    <input matInput formControlName="url" placeholder="url application">
+                </mat-form-field>
+            </div>
+    
+            <div>
+                <button mat-raised-button color="primary" type="submit" [disabled]="!createAppForm.valid">Create</button>
+            </div>
+        </form>
+    
+        <p>Delete App</p>
+        <form [formGroup]="deleteAppForm" (ngSubmit)="deleteApp(deleteAppForm)">
+            <div>
+                <mat-form-field appearance="fill" style="width: 20em;">
+                    <mat-label>Id Application Delete</mat-label>
+                    <input matInput formControlName="idApplication" placeholder="Id Application">
+                </mat-form-field>
+            </div>
+            <div>
+                <button mat-raised-button color="primary" type="submit" [disabled]="!deleteAppForm.valid">Delete</button>
+            </div>
+        </form>
+    </div>
+    
+    <div *ngIf="show" style="width: 80%;">
+        <h1>Response:</h1>
+        <mat-list>
+            <mat-list-item>App name : {{responseCreate?.name}}</mat-list-item>
+            <mat-divider></mat-divider>
+            <mat-list-item>Id Application: {{responseCreate?.applicationId}}</mat-list-item>
+            <mat-divider></mat-divider>
+            <mat-list-item>Url App: {{responseCreate?.url}}</mat-list-item>
+          </mat-list>
+    </div>
+</div>

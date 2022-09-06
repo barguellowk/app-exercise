@@ -1,0 +1,92 @@
+<div style="display: flex;">
+    <div style="width: 50%;">
+        <p>Create Organization</p>
+        <form [formGroup]="createOrganizationForm" (ngSubmit)="createOrganization(createOrganizationForm)">
+            <div>
+                <mat-form-field appearance="fill">
+                    <mat-label>Name</mat-label>
+                    <input matInput formControlName="name" placeholder="Name">
+                </mat-form-field>
+            </div>
+            <div>
+                <mat-form-field appearance="fill">
+                    <mat-label>Display Name</mat-label>
+                    <input matInput formControlName="displayName" placeholder="Surname">
+                </mat-form-field>
+            </div>
+            <div>
+                <mat-form-field appearance="fill">
+                    <mat-label>City</mat-label>
+                    <input matInput formControlName="city" placeholder="City">
+                </mat-form-field>
+            </div>
+            <div>
+                <mat-form-field appearance="fill">
+                    <mat-label>Country</mat-label>
+                    <input matInput formControlName="country" placeholder="Country: GB">
+                </mat-form-field>
+            </div>
+            <div>
+                <mat-form-field appearance="fill">
+                    <mat-label>Postal Code</mat-label>
+                    <input matInput formControlName="postalCode" placeholder="postal Code">
+                </mat-form-field>
+            </div>
+            <div>
+                <mat-form-field appearance="fill">
+                    <mat-label>Kind</mat-label>
+                    <input matInput formControlName="kind" placeholder="Kind ex: Company">
+                </mat-form-field>
+            </div>
+            <div>
+                <label>Allow twitter</label>
+                <input type="checkbox" formControlName="allowTwitter">
+            </div>
+            <div>
+                <label>Allow Windows</label>
+                <input type="checkbox" formControlName="allowWindows" >
+            </div>
+            <div>
+                <label>Allow Facebook</label>
+                <input type="checkbox" formControlName="allowFacebook" >
+            </div>
+            <div>
+                <label>Password Caducity</label>
+                <input type="checkbox" formControlName="passwordCaducity" >
+            </div>
+            <div>
+                <button mat-raised-button color="primary" type="submit" [disabled]="!createOrganizationForm.valid">Create</button>
+            </div>
+        </form>
+    
+        <p>Delete Organization</p>
+        <form [formGroup]="deleteOrganizationForm" (ngSubmit)="deleteOrganization(deleteOrganizationForm)">
+            <div>
+                <mat-form-field appearance="fill" style="width: 15em;">
+                    <mat-label>Id Organization</mat-label>
+                    <input matInput formControlName="idOrganization" placeholder="Id Organization">
+                </mat-form-field>
+            </div>
+            <div>
+                <button mat-raised-button color="primary" type="submit" [disabled]="!deleteOrganizationForm.valid">Delete</button>
+            </div>
+        </form>
+    </div>
+    
+    <div *ngIf="show" style="width: 80%;">
+        <h1>Response:</h1>
+        <mat-list>
+            <mat-list-item>Name : {{responseCreate?.name}}</mat-list-item>
+            <mat-divider></mat-divider>
+            <mat-list-item>Display Name: {{responseCreate?.displayName}}</mat-list-item>
+            <mat-divider></mat-divider>
+            <mat-list-item>Organization Id: {{responseCreate?.organizationalUnitId}}</mat-list-item>
+            <mat-divider></mat-divider>
+            <mat-list-item>Country: {{responseCreate?.country}}</mat-list-item>
+            <mat-divider></mat-divider>
+            <mat-list-item>City: {{responseCreate?.city}}</mat-list-item>
+            <mat-divider></mat-divider>
+            <mat-list-item>Postal Code: {{responseCreate?.postalCode}}</mat-list-item>
+          </mat-list>
+    </div>
+</div>

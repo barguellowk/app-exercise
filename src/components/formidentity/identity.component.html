@@ -1,0 +1,77 @@
+<div style="display: flex;">
+    <div style="width: 50%;">
+        <p>Create Identity</p>
+        <form [formGroup]="createIdentityForm" (ngSubmit)="createIdentity(createIdentityForm)">
+            <div>
+                <mat-form-field appearance="fill">
+                    <mat-label>Name</mat-label>
+                    <input matInput formControlName="name" placeholder="Name">
+                </mat-form-field>
+            </div>
+            <div>
+                <mat-form-field appearance="fill">
+                    <mat-label>Surname</mat-label>
+                    <input matInput formControlName="surname" placeholder="Surname">
+                </mat-form-field>
+            </div>
+            <div>
+                <mat-form-field appearance="fill">
+                    <mat-label>Language</mat-label>
+                    <input matInput formControlName="language" placeholder="Language : en-GB">
+                </mat-form-field>
+            </div>
+            <div>
+                <mat-form-field appearance="fill">
+                    <mat-label>Country</mat-label>
+                    <input matInput formControlName="country" placeholder="Country: GB">
+                </mat-form-field>
+            </div>
+            <div>
+                <mat-form-field appearance="fill">
+                    <mat-label>Email</mat-label>
+                    <input matInput formControlName="email" placeholder="Email">
+                </mat-form-field>
+            </div>
+            <div>
+                <mat-form-field appearance="fill">
+                    <mat-label>Password</mat-label>
+                    <input matInput type="password" formControlName="password" placeholder="password">
+                </mat-form-field>
+            </div>
+    
+            <div>
+                <button mat-raised-button color="primary" type="submit" [disabled]="!createIdentityForm.valid">Create</button>
+            </div>
+        </form>
+    
+        <p>Delete Identity</p>
+        <form [formGroup]="deleteIdentityForm" (ngSubmit)="deleteIdentity(deleteIdentityForm)">
+            <div>
+                <mat-form-field appearance="fill" style="width: 15em;">
+                    <mat-label>Identity Email</mat-label>
+                    <input matInput formControlName="email" placeholder="Email identity">
+                </mat-form-field>
+            </div>
+            <div>
+                <button mat-raised-button color="primary" type="submit" [disabled]="!deleteIdentityForm.valid">Delete</button>
+            </div>
+        </form>
+    </div>
+    
+    <div *ngIf="show" style="width: 80%;">
+        <h1>Response:</h1>
+        <mat-list>
+            <mat-list-item>Name : {{responseCreate?.name}}</mat-list-item>
+            <mat-divider></mat-divider>
+            <mat-list-item>Surname: {{responseCreate?.surname}}</mat-list-item>
+            <mat-divider></mat-divider>
+            <mat-list-item *ngFor="let email of responseCreate?.emails ">Email: {{email?.email}}</mat-list-item>
+            <mat-divider></mat-divider>
+            <mat-list-item>Identity Id: {{responseCreate?.identityId}}</mat-list-item>
+            <mat-divider></mat-divider>
+            <mat-list-item>Country: {{responseCreate?.country}}</mat-list-item>
+            <mat-divider></mat-divider>
+            <mat-list-item>Language: {{responseCreate?.language}}</mat-list-item>
+          </mat-list>
+    </div>
+</div>
