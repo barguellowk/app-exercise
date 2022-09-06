@@ -34,7 +34,11 @@ export class FormAppcomponent implements OnInit {
         var body = JSON.stringify(form.value);
         this.http.post<ResponseCreateApp>(urlBase + 'App/CreateApp', body, { headers: new HttpHeaders({ 'Content-Type': 'application/json' }) }).subscribe(data => {
             this.responseCreate = data;
-            this.show = true;
+            if(data.error){
+                alert(data.error);
+              }else{
+                this.show = true;
+              }
         })
     }
 

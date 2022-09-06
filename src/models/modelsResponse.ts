@@ -4,7 +4,7 @@ export interface ResponseCreateApp {
     name: string,
     url: string,
     logo: string,
-    Error: string
+    error: string
 }
 
 export interface ErrorResponse {
