@@ -14,10 +14,10 @@ export class FormTokencomponent implements OnInit {
 
   ngOnInit(): void {
     this.tokenForm = this.fb.group({
-      grantType: [null, [Validators.required, Validators.minLength(4)]],
-      clientId: [null, [Validators.required, Validators.minLength(4)]],
-      clientSecret: [null, [Validators.required, Validators.minLength(4)]],
-      scope: [null, [Validators.required, Validators.minLength(1)]]
+      grantType: ["client_credentials"],
+      clientId: ["becquer.arguello"],
+      clientSecret: ["123456"],
+      scope: ["WK.GraphAPI.Private"]
     });
   }
 
