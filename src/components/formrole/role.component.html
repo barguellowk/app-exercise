@@ -1,3 +1,49 @@
-<h4>
-    Form Role
-</h4>
+<div style="display: flex;">
+    <div style="width: 50%;">
+        <p>Create Role</p>
+        <form [formGroup]="createRoleForm" (ngSubmit)="createRole(createRoleForm)">
+            <div>
+                <mat-form-field appearance="fill">
+                    <mat-label>Id Licensed App</mat-label>
+                    <input matInput formControlName="licensedApplicationId" placeholder="Id Licensed App">
+                </mat-form-field>
+            </div>
+            <div>
+                <mat-form-field appearance="fill">
+                    <mat-label>Id Member</mat-label>
+                    <input matInput formControlName="memberId" placeholder="Member Id">
+                </mat-form-field>
+            </div>
+        </form>
+    
+        <p>Delete Role</p>
+        <form [formGroup]="deleteRoleForm" (ngSubmit)="deleteRole(deleteRoleForm)">
+            <div>
+                <mat-form-field appearance="fill" style="width: 15em;">
+                    <mat-label>Id Member</mat-label>
+                    <input matInput formControlName="idMember" placeholder="Id Member">
+                </mat-form-field>
+            </div>
+            <div>
+                <mat-form-field appearance="fill" style="width: 15em;">
+                    <mat-label>Id Role</mat-label>
+                    <input matInput formControlName="idRole" placeholder="Id Role">
+                </mat-form-field>
+            </div>
+            <div>
+                <button mat-raised-button color="primary" type="submit" [disabled]="!deleteRoleForm.valid">Delete</button>
+            </div>
+        </form>
+    </div>
+    
+    <div *ngIf="show" style="width: 80%;">
+        <h1>Response:</h1>
+        <mat-list>
+            <mat-list-item>Id Role : {{responseCreate?.roleId}}</mat-list-item>
+            <mat-divider></mat-divider>
+            <mat-list-item>Id Granted App: {{responseCreate?.grantedApplicationId}}</mat-list-item>
+            <mat-divider></mat-divider>
+            <mat-list-item>Member Id: {{responseCreate?.memberId}}</mat-list-item>
+          </mat-list>
+    </div>
+</div>

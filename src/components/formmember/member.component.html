@@ -1,3 +1,59 @@
-<h4>
-    Form Member
-</h4>
+<div style="display: flex;">
+    <div style="width: 50%;">
+        <p>Create Member</p>
+        <form [formGroup]="createMemberForm" (ngSubmit)="createMember(createMemberForm)">
+            <div>
+                <mat-form-field appearance="fill">
+                    <mat-label>Id Identity</mat-label>
+                    <input matInput formControlName="identityId" placeholder="Id Identity">
+                </mat-form-field>
+            </div>
+            <div>
+                <mat-form-field appearance="fill">
+                    <mat-label>Id Organization</mat-label>
+                    <input matInput formControlName="organizationalUnitId" placeholder="Organization Id">
+                </mat-form-field>
+            </div>
+            <div>
+                <mat-form-field appearance="fill">
+                    <mat-label>State</mat-label>
+                    <input matInput formControlName="state" placeholder="State: Active">
+                </mat-form-field>
+            </div>
+            <div>
+                <mat-form-field appearance="fill">
+                    <mat-label>Profile Type</mat-label>
+                    <input matInput formControlName="profileType" placeholder="type: Employee">
+                </mat-form-field>
+            </div>
+        </form>
+    
+        <p>Delete Member</p>
+        <form [formGroup]="deleteMemberForm" (ngSubmit)="deleteMember(deleteMemberForm)">
+            <div>
+                <mat-form-field appearance="fill" style="width: 15em;">
+                    <mat-label>Id Member</mat-label>
+                    <input matInput formControlName="idMember" placeholder="Id Member">
+                </mat-form-field>
+            </div>
+            <div>
+                <button mat-raised-button color="primary" type="submit" [disabled]="!deleteMemberForm.valid">Delete</button>
+            </div>
+        </form>
+    </div>
+    
+    <div *ngIf="show" style="width: 80%;">
+        <h1>Response:</h1>
+        <mat-list>
+            <mat-list-item>Id Organization : {{responseCreate?.organizationalUnitId}}</mat-list-item>
+            <mat-divider></mat-divider>
+            <mat-list-item>Id Invitation: {{responseCreate?.invitationId}}</mat-list-item>
+            <mat-divider></mat-divider>
+            <mat-list-item>Member Id: {{responseCreate?.memberId}}</mat-list-item>
+            <mat-divider></mat-divider>
+            <mat-list-item>Profile type: {{responseCreate?.profileType}}</mat-list-item>
+            <mat-divider></mat-divider>
+            <mat-list-item>Identity: {{responseCreate?.identity}}</mat-list-item>
+          </mat-list>
+    </div>
+</div>

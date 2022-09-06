@@ -1,3 +1,59 @@
-<h4>
-    Form License
-</h4>
+<div style="display: flex;">
+    <div style="width: 50%;">
+        <p>Create License</p>
+        <form [formGroup]="createLicenseForm" (ngSubmit)="createLicense(createLicenseForm)">
+            <div>
+                <mat-form-field appearance="fill">
+                    <mat-label>Application Id</mat-label>
+                    <input matInput formControlName="applicationId" placeholder="Applciation id">
+                </mat-form-field>
+            </div>
+            <div>
+                <mat-form-field appearance="fill">
+                    <mat-label>Description</mat-label>
+                    <input matInput formControlName="description" placeholder="Description">
+                </mat-form-field>
+            </div>
+            <div>
+                <mat-form-field appearance="fill" style="width: 15em;">
+                    <mat-label>Id Organization</mat-label>
+                    <input matInput formControlName="idOrganization" placeholder="Id Organization">
+                </mat-form-field>
+            </div>
+    
+            <div>
+                <button mat-raised-button color="primary" type="submit" [disabled]="!createLicenseForm.valid">Create</button>
+            </div>
+        </form>
+    
+        <p>Delete License</p>
+        <form [formGroup]="deleteLicenseForm" (ngSubmit)="deleteLicense(deleteLicenseForm)">
+            <div>
+                <mat-form-field appearance="fill" style="width: 15em;">
+                    <mat-label>Id Member</mat-label>
+                    <input matInput formControlName="idMember" placeholder="Id Member">
+                </mat-form-field>
+            </div>
+            <div>
+                <mat-form-field appearance="fill" style="width: 15em;">
+                    <mat-label>Id License</mat-label>
+                    <input matInput formControlName="idLicense" placeholder="Id License">
+                </mat-form-field>
+            </div>
+            <div>
+                <button mat-raised-button color="primary" type="submit" [disabled]="!deleteLicenseForm.valid">Delete</button>
+            </div>
+        </form>
+    </div>
+    
+    <div *ngIf="show" style="width: 80%;">
+        <h1>Response:</h1>
+        <mat-list>
+            <mat-list-item>App Id : {{responseCreate?.applicationId}}</mat-list-item>
+            <mat-divider></mat-divider>
+            <mat-list-item>Organization Id: {{responseCreate?.organizationalUnitId}}</mat-list-item>
+            <mat-divider></mat-divider>
+            <mat-list-item>Licensed App Id: {{responseCreate?.licensedApplicationId}}</mat-list-item>
+          </mat-list>
+    </div>
+</div>
