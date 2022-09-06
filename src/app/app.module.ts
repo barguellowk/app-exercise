@@ -10,7 +10,7 @@ import { FormOrganizationModule } from 'src/components/formorganization/organiza
 import { FormLicenseModule } from 'src/components/formlicense/license.module';
 import { FormMemberModule } from 'src/components/formmember/member.module';
 import { FormRoleModule } from 'src/components/formrole/role.module';
-import { FormTokenModule } from 'src/components/formtoken/token.module';
+import { FormTokenModule } from 'src/components/token/token.module';
 import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({

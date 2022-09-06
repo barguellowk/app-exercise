@@ -31,7 +31,7 @@ export class FormLicenseComponent implements OnInit {
 
   createLicense(form: FormGroup<any>) {
     var body = { 'applicationId': form.value['applicationId'], 'description': form.value['description'] };
-    this.http.post<ResponseLicensedCreate>(urlBase + 'License/CreateLicense' + form.value['idOrganization'], body, { headers: new HttpHeaders({ 'Content-Type': 'application/json' }) }).subscribe(data => {
+    this.http.post<ResponseLicensedCreate>(urlBase + 'License/CreateLicense?organizationId=' + form.value['idOrganization'], body, { headers: new HttpHeaders({ 'Content-Type': 'application/json' }) }).subscribe(data => {
       this.responseCreate = data;
       if (data.error) {
         alert(data.error);

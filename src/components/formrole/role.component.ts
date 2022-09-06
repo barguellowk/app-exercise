@@ -30,7 +30,7 @@ import { urlBase } from 'src/models/uriConst';
   
     createRole(form: FormGroup<any>) {
       var body = {'licensedApplicationId': form.value['licensedApplicationId']};
-      this.http.post<ResponseRoleCreate>(urlBase + 'Role/CreateRole' + form.value['memberId'], body, { headers: new HttpHeaders({ 'Content-Type': 'application/json' }) }).subscribe(data => {
+      this.http.post<ResponseRoleCreate>(urlBase + 'Role/CreateRole?memberId=' + form.value['memberId'], body, { headers: new HttpHeaders({ 'Content-Type': 'application/json' }) }).subscribe(data => {
         this.responseCreate = data;
         if (data.error) {
           alert(data.error);

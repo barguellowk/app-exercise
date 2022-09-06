@@ -45,7 +45,7 @@ export class FormMemberComponent implements OnInit {
   deleteMember(form: FormGroup<any>) {
     this.http.delete(urlBase + 'Member/DeleteMember?idMember=' + form.value['idMember']).subscribe(data => {
       if (!data) {
-        alert("Identity with email : " + form.value['email'] + ' was remove successfull');
+        alert("Identity with email : " + form.value['idMember'] + ' was remove successfull');
       } else {
         alert(data);
       }
